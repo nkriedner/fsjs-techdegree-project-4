@@ -6,6 +6,29 @@ class Phrase {
 
     addPhraseToDisplay() {
         console.log("addPhraseToDisplay() running...");
+
+        // Add letter placeholders to the display (when game starts)
+        // Each letter is presented by an empy box (li element)
+        let html = "";
+
+        // Loop over the phrase array
+        for (let i = 0; i < this.phrase.length; i++) {
+            const letter = this.phrase[i];
+
+            // Create li element
+            const li = document.createElement("li");
+            li.textContent = letter;
+
+            if (letter !== " ") {
+                li.classList.add("hide");
+                li.classList.add("letter");
+                li.classList.add(`${letter}`);
+            } else {
+                li.classList.add("space");
+            }
+            // Display html
+            document.querySelector("#phrase ul").appendChild(li);
+        }
     }
     checkLetter() {
         console.log("checkLetter() running...");
