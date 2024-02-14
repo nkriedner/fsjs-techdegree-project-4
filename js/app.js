@@ -1,8 +1,8 @@
 // 'CLICK' event listener for 'Start Game' button
 document.querySelector("#btn__reset").addEventListener("click", () => {
-    console.log("click on start game button...");
-    // Hide overlay
-    document.querySelector("#overlay").style.display = "none";
+    // Create a new Game object
+    const newGame = new Game();
+    newGame.startGame();
 });
 
 // 'CLICK' event listener for each onscreen keyboard button
