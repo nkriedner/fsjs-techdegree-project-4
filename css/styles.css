@@ -174,10 +174,19 @@ button {
 
 .title {
     color: #fff;
+    /* Mx styles -> */
+    font-family: "Dancing Script", cursive;
+    text-transform: capitalize;
+    font-size: 5rem;
+    /* <- Mx styles */
 }
 
 .start {
     background-color: #3a3f58;
+
+    /* Mx styles -> */
+    background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+    /* <- Mx styles */
 }
 
 .start a {
@@ -186,6 +195,11 @@ button {
 
 .win {
     background-color: var(--color-win);
+    /* My styles -> */
+
+    background: linear-gradient(to right, #96c93d, #00b09b);
+
+    /* <- My styles */
 }
 
 .win a {
@@ -194,6 +208,9 @@ button {
 
 .lose {
     background-color: #f5785f;
+    /* My styles -> */
+    background: linear-gradient(to right, #bd3f32, #cb356b);
+    /* <- My styles */
 }
 
 .lose a {
