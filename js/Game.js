@@ -48,7 +48,9 @@ class Game {
             this.activePhrase.showMatchedLetter(clickedLetter);
             // 3. Check for a win:
             if (this.checkForWin()) {
-                this.gameOver("You won!!! 🤠", "win");
+                setTimeout(() => {
+                    this.gameOver("You won!!! 🤠", "win");
+                }, 750);
             }
         } else {
             // If the phrase does not contain the clicked letter:
@@ -75,7 +77,9 @@ class Game {
 
         // 3. Check for a lose:
         if (this.missed === 5) {
-            this.gameOver("You lost!!! 😱", "lose");
+            setTimeout(() => {
+                this.gameOver("You lost!!! 😱", "lose");
+            }, 750);
         }
     }
 
