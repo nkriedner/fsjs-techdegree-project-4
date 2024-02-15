@@ -13,23 +13,32 @@ class Game {
     }
 
     startGame() {
-        console.log("startGame() running...");
         // Hide overlay:
         document.querySelector("#overlay").style.display = "none";
         // this.activePhrase = this.getRandomPhrase();
         this.activePhrase = new Phrase(this.getRandomPhrase());
-        console.log(this.activePhrase);
         this.activePhrase.addPhraseToDisplay();
     }
     getRandomPhrase() {
-        console.log("getRandomPhrase() running...");
         // Create a random number (index) to get a random phrase
         const randomIndex = Math.floor(Math.random() * this.phrases.length);
         const randomPhrase = this.phrases[randomIndex];
         return randomPhrase;
     }
-    handleinteraction() {
-        console.log("handleInteraction() running...");
+    handleinteraction(e) {
+        const clickedLetter = e.target.textContent;
+
+        if (this.activePhrase.checkLetter(clickedLetter)) {
+            console.log("yes");
+            e.target.disabled = true;
+            e.target.classList.add("chosen");
+            this.activePhrase.showMatchedLetter();
+            if (this.checkForWin()) {
+                this.gameOver();
+            }
+        } else {
+            e.target.classList.add("wrong");
+        }
     }
     removeLife() {
         console.log("removeLife() running...");

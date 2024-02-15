@@ -5,8 +5,6 @@ class Phrase {
     }
 
     addPhraseToDisplay() {
-        console.log("addPhraseToDisplay() running...");
-
         // Add letter placeholders to the display (when game starts)
         // Each letter is presented by an empy box (li element)
         let html = "";
@@ -30,8 +28,11 @@ class Phrase {
             document.querySelector("#phrase ul").appendChild(li);
         }
     }
-    checkLetter() {
-        console.log("checkLetter() running...");
+    checkLetter(letter) {
+        console.log("checkLetter() running...", letter);
+
+        console.log(this.phrase);
+        return this.phrase.includes(letter);
     }
     showMatchedLetter() {
         console.log("showMatchedLetter() running...");
