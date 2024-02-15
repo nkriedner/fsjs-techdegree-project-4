@@ -29,6 +29,7 @@ class Game {
         const clickedLetter = e.target.textContent;
 
         if (this.activePhrase.checkLetter(clickedLetter)) {
+            this.activePhrase.showMatchedLetter(clickedLetter);
             console.log("yes");
             e.target.disabled = true;
             e.target.classList.add("chosen");
@@ -38,15 +39,27 @@ class Game {
             }
         } else {
             e.target.classList.add("wrong");
+            this.removeLife();
         }
     }
     removeLife() {
-        console.log("removeLife() running...");
+        // Replace a liveHeart with lostHeart
+        document.querySelectorAll(".tries")[
+            this.missed
+        ].innerHTML = `<img src="images/lostHeart.png" alt="Lost Heart Icon" height="35" width="30" />`;
+
+        this.missed++;
+
+        if (this.missed === 5) {
+            this.gameOver();
+        }
     }
     checkForWin() {
         console.log("checkForWin() running...");
     }
     gameOver() {
         console.log("gameOver() running...");
+        // Display overlay
+        document.querySelector("#overlay").style.display = "flex";
     }
 }

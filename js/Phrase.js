@@ -34,7 +34,17 @@ class Phrase {
         console.log(this.phrase);
         return this.phrase.includes(letter);
     }
-    showMatchedLetter() {
+    showMatchedLetter(matchedLetter) {
         console.log("showMatchedLetter() running...");
+
+        // Loop through the list of letters
+        const lis = document.querySelectorAll(".letter");
+        for (let i = 0; i < lis.length; i++) {
+            if (lis[i].textContent === matchedLetter) {
+                console.log(matchedLetter);
+                lis[i].classList.remove("hide");
+                lis[i].classList.add("show");
+            }
+        }
     }
 }
