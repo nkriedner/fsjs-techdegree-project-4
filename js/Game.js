@@ -13,10 +13,12 @@ class Game {
     }
 
     startGame() {
+        console.log(this.activePhrase);
         // Hide overlay:
         document.querySelector("#overlay").style.display = "none";
         // this.activePhrase = this.getRandomPhrase();
         this.activePhrase = new Phrase(this.getRandomPhrase());
+        console.log("NEW PHRASE:", this.activePhrase);
         this.activePhrase.addPhraseToDisplay();
     }
     getRandomPhrase() {
@@ -26,16 +28,15 @@ class Game {
         return randomPhrase;
     }
     handleinteraction(e) {
+        // console.log(this.activePhrase);
         const clickedLetter = e.target.textContent;
+        e.target.disabled = true;
 
         if (this.activePhrase.checkLetter(clickedLetter)) {
-            this.activePhrase.showMatchedLetter(clickedLetter);
-            console.log("yes");
-            e.target.disabled = true;
             e.target.classList.add("chosen");
-            this.activePhrase.showMatchedLetter();
+            this.activePhrase.showMatchedLetter(clickedLetter);
             if (this.checkForWin()) {
-                this.gameOver();
+                this.gameOver("You won!!! 🫶", "win");
             }
         } else {
             e.target.classList.add("wrong");
@@ -51,15 +52,43 @@ class Game {
         this.missed++;
 
         if (this.missed === 5) {
-            this.gameOver();
+            this.gameOver("You lost!!! 😱", "lose");
         }
     }
     checkForWin() {
-        console.log("checkForWin() running...");
+        // Check if there are no letters with the class 'hide' -> all letters are found
+        const hiddenLetters = document.querySelectorAll(".hide");
+        if (hiddenLetters.length === 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    gameOver() {
-        console.log("gameOver() running...");
-        // Display overlay
+    gameOver(text, newOverlayClass) {
+        // Display overlay and text
         document.querySelector("#overlay").style.display = "flex";
+        // document.querySelector("#overlay").classList.remove("start");
+        // document.querySelector("#overlay").classList.add(newOverlayClass);
+        document.querySelector("#overlay").className = newOverlayClass;
+        document.querySelector("#game-over-message").textContent = text;
+
+        // Remove all li elements from the Phrase ul
+        document.querySelector("#phrase ul").innerHTML = "";
+
+        // Reset keyboard
+        const keyboard = document.querySelectorAll(".key");
+        for (let i = 0; i < keyboard.length; i++) {
+            keyboard[i].disabled = false;
+            keyboard[i].classList.remove("chosen");
+            keyboard[i].classList.remove("wrong");
+        }
+
+        // Reset hearts
+        const hearts = document.querySelectorAll(".tries");
+        for (let i = 0; i < 5; i++) {
+            hearts[i].innerHTML = `<img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30" />`;
+        }
+
+        this.missed = 0;
     }
 }

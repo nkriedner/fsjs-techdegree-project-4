@@ -29,19 +29,15 @@ class Phrase {
         }
     }
     checkLetter(letter) {
-        console.log("checkLetter() running...", letter);
-
-        console.log(this.phrase);
+        // console.log(this);
+        // console.log(this.phrase);
         return this.phrase.includes(letter);
     }
     showMatchedLetter(matchedLetter) {
-        console.log("showMatchedLetter() running...");
-
         // Loop through the list of letters
         const lis = document.querySelectorAll(".letter");
         for (let i = 0; i < lis.length; i++) {
             if (lis[i].textContent === matchedLetter) {
-                console.log(matchedLetter);
                 lis[i].classList.remove("hide");
                 lis[i].classList.add("show");
             }
