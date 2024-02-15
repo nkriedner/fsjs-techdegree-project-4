@@ -28,6 +28,9 @@ body {
     flex-direction: column;
     display: flex;
     height: 100vh;
+    /* My styles -> */
+    background: linear-gradient(to right, #ffffff, #6dd5fa, #2980b9);
+    /* <- My styles */
 }
 
 li,
@@ -60,7 +63,17 @@ button {
     -o-transition: var(--transition);
     transition: var(--transition);
     cursor: pointer;
+    /* My styles -> */
+    transition: all 0.5s;
+    /* <- My styles */
 }
+
+/* My styles -> */
+button.key:hover {
+    background-color: rgb(186, 172, 172);
+    transform: scale(1.05) translateY(-0.1rem);
+}
+/* <- My styles */
 
 #btn__reset {
     width: 200px;
