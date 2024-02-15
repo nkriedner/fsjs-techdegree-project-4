@@ -1,7 +1,6 @@
-// Create the Game Class
 class Game {
     constructor() {
-        this.missed = 0;
+        this.missed = 0; // counts the missed guesses
         this.phrases = [
             "Life is beautiful",
             "We are all one",
@@ -18,7 +17,7 @@ class Game {
 
         // 2. Get a random phrase:
         this.activePhrase = new Phrase(this.getRandomPhrase());
-        console.log("NEW PHRASE:", this.activePhrase);
+        // console.log("NEW PHRASE:", this.activePhrase);
 
         // 3. Add the phrase to the display:
         this.activePhrase.addPhraseToDisplay();
@@ -34,7 +33,7 @@ class Game {
         return randomPhrase;
     }
 
-    handleinteraction(clickedLetter) {
+    handleInteraction(clickedLetter) {
         // If the phrase contains the clicked letter:
         if (this.activePhrase.checkLetter(clickedLetter)) {
             // 1. Loop through all .key buttons -> disable + mark button:
