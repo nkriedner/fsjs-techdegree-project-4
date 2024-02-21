@@ -69,7 +69,7 @@ button {
 }
 
 /* My styles -> */
-button.key:hover {
+button.key:not(.chosen):not(.wrong):hover {
     background-color: rgb(186, 172, 172);
     transform: scale(1.05) translateY(-0.1rem);
 }
@@ -123,7 +123,10 @@ button.key:hover {
 
 .show {
     color: #fff;
-    background-color: #4ac0d5;
+    /* background-color: #4ac0d5; */
+    /* My styles -> */
+    background-color: #7ba847;
+    /* <- My styles */
     font-size: 20px;
     height: 65px;
     width: 65px;
@@ -143,6 +146,9 @@ button.key:hover {
 
 .chosen {
     background: #3a3f58;
+    /* My styles -> */
+    background-color: #7ba847;
+    /* <- My styles */
     border-radius: 5px;
     font-size: var(--font-size-medium);
     color: #ffffff;
@@ -150,6 +156,9 @@ button.key:hover {
 
 .wrong {
     background: #f7a964;
+    /* My styles -> */
+    background-color: #ae4267;
+    /* <- My styles */
     color: #ffffff;
 }
 
